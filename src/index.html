@@ -1,0 +1,68 @@
+<!--
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link href="styles/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+	<div class="menubar">
+		<div class="navbar">
+			<div class="dropdown">
+				<button class="dropbtn">Dropdown 
+					<i class="fa fa-caret-down"></i>
+				</button>
+				<div class="dropdown-content">
+					<a id="fileExport" href="#">Export</a>
+					<a id="fileImport" href="#">Import</a>
+					<a id="fileSave" href="#">Local Save</a>
+					<a id="fileOpen" href="#">Local Import</a>
+					<a href="#">Link 2</a>
+					<a href="#">Link 3</a>
+				</div>
+			</div> 
+		</div>
+	</div>
+
+	<div id="main">
+		<div id="tools">
+			<div id="toolbox">
+			<button class="toolbutton" id="pencil">
+				<img src="styles/pencil.png"/>
+			</button>
+			<button class="toolbutton" id="eraser">Eraser Tool</button>
+			<button class="toolbutton" id="eyedropper">Eyedropper Tool</button>
+
+		</div>
+
+			<canvas id="canvas"></canvas>
+		</div>
+
+		<div id="imageContainer">
+			<div id="imageBox">
+				<div id="image"></div>
+			</div>
+		</div>
+
+
+		<div id="colorinputs">
+			<input type="color" id="color1" />
+			<input type="color" id="color2" />
+				<input placeholder="Paste .hex file" id="importpalette" type="text"/>
+			<button id="importPaletteButton">Import</button>
+			<div id="palettes">
+				<div id="palettesPadding"></div>
+			</div>
+			</div>
+
+	</div>
+
+	<script src="utils.js"></script>
+	<script src="script.js"></script>
+
+</body>
+
+</html>

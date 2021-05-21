@@ -1,0 +1,238 @@
+b {
+	fill: rgb(63,67,90);
+	fill: rgb(85,93,114);
+	fill:rgb(121,131,152);
+	fill: rgb(162,173,191);
+	fill: rgb(203,216,226); 
+}
+
+
+html, body {
+	height: 100%;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	font-family: monospace;
+	display: flex;
+	flex-direction: column;
+}
+
+.menubar {
+	display: flex;
+	padding: 0px;
+	background:rgb(121,131,152);
+}
+
+#title {
+	padding: 10px;
+}
+
+#main {
+	display: flex;
+	flex-direction: row;
+	flex-grow: 1;
+	width: 100%;
+}
+
+#tools {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	background-color: rgb(121,131,152);
+	border-right: 4px solid rgb(63,67,90);
+
+}
+
+#toolbox {
+	padding: 4px;
+	display: flex;
+}
+
+.toolbutton {
+	padding: 1px;
+	display: inline-block;
+  width: 40px;
+	height: 40px;
+	background-color:rgb(121,131,152);
+	border: 3px solid rgb(162,173,191);
+	border-right: 3px solid rgb(85,93,114);
+	border-bottom: 3px solid rgb(85,93,114);
+	image-rendering: pixelated;
+}
+
+img {
+	justify-self: left;
+	width: 32px;
+	height: 32px;
+	aspect-ratio: 1/1;
+}
+
+#imageContainer {
+	flex-grow: 1;
+	min-width: 0;
+	background-color: rgb(85,93,114);
+	border-top: 4px solid rgb(63,67,90);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+}
+
+#imageBox {
+	width: 90vh;
+	height: 90vh;
+}
+
+#image {
+	height: 100%;
+	width: 100%;
+	flex-direction: column;
+	display: flex;
+	flex-grow: 1;
+}
+
+#image .row {
+  display: flex;
+  flex-grow: 1;
+	flex-direction: row;
+}
+
+#image .cell {
+  flex-grow: 1;
+	flex-direction: row;
+	background-image: url('transparent.png');
+	background-size: 100% 100%;
+	image-rendering: pixelated;
+	position: relative;
+}
+
+#image .cell div {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+body.pencil #image {
+	cursor: url("pencil.cur") 0 -32, auto;
+	image-rendering: pixelated;
+}
+
+#colorinputs {
+	border-left: 4px solid rgb(162,173,191);
+	width: 128px;
+	background-color: rgb(121,131,152);
+	display: flex;
+	flex-direction: column;
+}
+
+#colorinputs input {
+	width: 100%;
+	padding: 0px;
+	margin: 0px;
+	height: 24px;
+	box-sizing: border-box;
+}
+
+/* 
+Buttons to add, remove and edit colors
+box for each color
+left and right click to set fg and bg colors
+*/
+
+#palettes {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+  padding: 0px;
+	margin-bottom: 0;
+
+	background-color: rgb(85,93,114);
+	width: 100%;
+}
+
+.paletteColor {
+	flex-wrap: wrap;
+	width: 28px;
+	height: 28px;
+	border: 2px solid rgb(63,67,90);
+}
+
+#palettesPadding {
+	height: 100%;
+	background-color: rgb(85,93,114);
+}
+
+#canvas {
+  width: 100%;
+	background-image: url('transparent.png');
+	background-size: auto 100%;
+	image-rendering: pixelated;
+}
+
+#canvas:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+	image-rendering: crisp-edges;
+	
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}

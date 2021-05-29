@@ -5,14 +5,66 @@
 
 <head>
 	<link href="styles/style.css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 
 <body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">Brand</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="main_nav">
+				<ul class="navbar-nav">
+					<li class="nav-item dropdown" id="myDropdown">
+						<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> File </a>
+						<ul class="dropdown-menu">
+							<li> <a class="dropdown-item" id="fileExport" href="#">Export</a> </li>
+							<li> <a class="dropdown-item" id="fileImport" href="#">Import</a> </li>
+							<li> <a class="dropdown-item" id="fileSave" href="#">Local Save</a> </li>
+							<li> <a class="dropdown-item" id="fileOpen" href="#">Local Import</a> </li>
+						</ul>
+					</li>
 
+					<li class="nav-item dropdown" id="myDropdown">
+						<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Edit </a>
+						<ul class="dropdown-menu">
+							<li> <a class="dropdown-item" id="editUndo" href="#">Undo</a> </li>
+							<li> <a class="dropdown-item" id="editRedo" href="#">Redo</a> </li>
+							<li> <a class="dropdown-item" id="editUndoHistory" href="#">Undo History &raquo; </a>
+								<ul class="submenu dropdown-menu">
+									<li><a class="dropdown-item" href="#">Submenu item 1</a></li>
+									<li><a class="dropdown-item" href="#">Submenu item 2</a></li>
+									<li><a class="dropdown-item" href="#">Submenu item 3</a>
+									</li>
+									<li><a class="dropdown-item" href="#">Submenu item 4</a></li>
+									<li><a class="dropdown-item" href="#">Submenu item 5</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+
+					<li class="nav-item dropdown" id="myDropdown">
+						<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Palette </a>
+						<ul class="dropdown-menu">
+							<li> <a class="dropdown-item" id="paletteImport" href="#">Import Palette</a> </li>
+							<li> <a class="dropdown-item" id="paletteExport" href="#">Export Palette</a> </li>
+							<li> <a class="dropdown-item" id="paletteCreateFromImage" href="#">Create Palette From Image </a> </li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<!-- navbar-collapse.// -->
+		</div>
+		<!-- container-fluid.// -->
+	</nav>
+	<!--		
 	<div class="menubar">
 		<div class="navbar">
 			<div class="dropdown">
-				<button class="dropbtn">Dropdown 
+				<button class="dropbtn">File
 					<i class="fa fa-caret-down"></i>
 				</button>
 				<div class="dropdown-content">
@@ -20,23 +72,40 @@
 					<a id="fileImport" href="#">Import</a>
 					<a id="fileSave" href="#">Local Save</a>
 					<a id="fileOpen" href="#">Local Import</a>
-					<a href="#">Link 2</a>
-					<a href="#">Link 3</a>
 				</div>
-			</div> 
+			</div>
+			<div class="dropdown">
+				<button class="dropbtn">Edit
+					<i class="fa fa-caret-down"></i>
+				</button>
+				<div class="dropdown-content">
+					<a id="editUndo" href="#">Undo</a>
+					<a id="editRedo" href="#">Redo</a>
+				</div>
+			</div>
+			<div class="dropdown">
+				<button class="dropbtn">Palette
+					<i class="fa fa-caret-down"></i>
+				</button>
+				<div class="dropdown-content">
+					<a id="paletteImport" href="#">Import Palette</a>
+					<a id="paletteExport" href="#">Export Palette</a>
+					<a id="paletteCreateFromImage" href="#">Create Palette From Image</a>
+				</div>
+			</div>
 		</div>
 	</div>
-
+-->
 	<div id="main">
 		<div id="tools">
 			<div id="toolbox">
-			<button class="toolbutton" id="pencil">
-				<img src="styles/pencil.png"/>
-			</button>
-			<button class="toolbutton" id="eraser">Eraser Tool</button>
-			<button class="toolbutton" id="eyedropper">Eyedropper Tool</button>
+				<button class="toolbutton" id="pencil">
+					<img src="styles/pencil.png" />
+				</button>
+				<button class="toolbutton" id="eraser">Eraser Tool</button>
+				<button class="toolbutton" id="eyedropper">Eyedropper Tool</button>
 
-		</div>
+			</div>
 
 			<canvas id="canvas"></canvas>
 		</div>
@@ -51,18 +120,17 @@
 		<div id="colorinputs">
 			<input type="color" id="color1" />
 			<input type="color" id="color2" />
-				<input placeholder="Paste .hex file" id="importpalette" type="text"/>
+			<input placeholder="Paste .hex file" id="importpalette" type="text" />
 			<button id="importPaletteButton">Import</button>
 			<div id="palettes">
 				<div id="palettesPadding"></div>
 			</div>
-			</div>
+		</div>
 
 	</div>
-
 	<script src="utils.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="script.js"></script>
-
 </body>
 
 </html>

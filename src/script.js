@@ -10,14 +10,12 @@ let color1 = "rgb(0,0,0)";
 let color2 = "rgb(255,255,255)";
 
 let storage = window.sessionStorage;
-const saveButton = document.getElementById("fileExport");
-saveButton.addEventListener("click", save);
-const importButton = document.getElementById("fileImport");
 
-const localSaveButton = document.getElementById("fileSave");
-localSaveButton.addEventListener("click", localSave);
-const localImportButton = document.getElementById("fileOpen");
-localImportButton.addEventListener("click", localImport);
+$("#fileExport").addEventListener("click", save);
+$("#fileSave").addEventListener("click", localSave);
+$("#fileOpen").addEventListener("click", localImport);
+$("#editUndo").addEventListener("click", undo);
+$("#editRedo").addEventListener("click", redo);
 
 const colorInputs = document.getElementById("colorinputs");
 const canvas = document.getElementById("canvas");
@@ -57,7 +55,7 @@ function importPng(file){
 }
 
 let referenceImage = [];
-importButton.addEventListener("click", function() {
+$("#fileImport").addEventListener("click", function() {
 	let file = document.createElement("input");
 	file.type = "file";
 	file.addEventListener("change", () => {
@@ -127,13 +125,6 @@ let currentGroup;
 let undoActions = [];
 let redoActions = [];
 
-function undoAction(target, before, after, type) {
-	this.target = target;
-	this.before = before;
-	this.after = after;
-	this.type = type;
-}
-
 document.addEventListener("keyup", handleKey);
 
 function undo(){
@@ -164,6 +155,9 @@ function pencilClick(event, buttonsPressed) {
 
 function eraserClick(event, buttonsPressed) {
 	if (buttonsPressed & (1 << 0)) {
+		return pixelSetter(event.currentTarget, "rgb(0,0,0,0)");
+	}
+	if (buttonsPressed & (1 << 1)) {
 		return pixelSetter(event.currentTarget, "rgb(0,0,0,0)");
 	}
 }
@@ -262,17 +256,16 @@ function paletteClick (event) {
 	}
 }
 
-let importPaletteButton = document.getElementById("importPaletteButton");
-importPaletteButton.addEventListener("click", readHexPalette);
+$("#paletteImport").addEventListener("click", () => readHexPalette);
+$("#paletteCreateFromImage").addEventListener("click", () => reloadPalette(createPaletteFromImage()));
 
 let palette = ["black", "white"];
 for (let i = 0; i < 360; i += 360 / 32) {
 	palette.push(`hsl(${i.toFixed(1)},100%,50%)`);
 }
 
-let input = document.getElementById("importpalette");
 function readHexPalette (){
-	let hex = input.value.split(" ");
+	let hex = prompt("Paste .hex file").split(" ");
 
 	palette = [];
 	for (let i = 0; i < hex.length-1; i++) {
@@ -295,7 +288,6 @@ function reloadPalette (palette){
 		paletteColor.className = "paletteColor";
 		paletteColor.draggable = false;
 		paletteColor.style.backgroundColor = palette[i];
-		console.log(paletteColor.style.backgroundColor);
 		paletteColor.addEventListener("mousedown", paletteClick);
 		palettes.appendChild(paletteColor);
 	}
@@ -325,11 +317,11 @@ function rebuildImage(width, height, reference){
 	imageBox.appendChild(image);
 	for (let i = 0; i < h; i++) {
 		let htmlrow = document.createElement("div");
-		htmlrow.className = "row";
+		htmlrow.className = "imageRow";
 		htmlrow.draggable = false;
 		for (let j = 0; j < w; j++) {
 			let htmlcell = document.createElement("div");
-			htmlcell.className = "cell";
+			htmlcell.className = "imageCell";
 			let bgColor = document.createElement("div");
 			bgColor.draggable = false;
 			bgColor.classList = "bg";
@@ -340,6 +332,8 @@ function rebuildImage(width, height, reference){
 			bgColor.addEventListener('contextmenu', event => event.preventDefault());
 			if (reference) {
 				drawPixel(bgColor, reference[i][j]);
+			} else {
+				drawPixel(bgColor, startColor);
 			}
 			htmlcell.appendChild(bgColor);
 			htmlrow.appendChild(htmlcell);
